@@ -110,85 +110,103 @@
 // console.log(count)
 
 
-// const abc = [
-//     {af:[3,4,4]},
-//     {adf:[3,4,4]},
-//     {afd:[3,4,4]},
-//     {daldf:[3,4,4]}
-// ]
-// let sum=0
-// for(i=0;i<abc.length;i++){
-// let b=abc[i]
-// for(let i in b){
-//   sum+=b[i].reduce((acc,cur)=>acc+cur,0)
-// }
-// }
-// console.log(sum)
+const abc = [
+    {af:3},
+    {adf:3},
+    {afd:3},
+    {daldf:3}
+]
+let sum=0
+for(i=0;i<abc.length;i++){
+let b=abc[i]
+ 
+let a=Object.values(b)
 
+  sum+=a.reduce((acc,cur)=>acc+cur,0)
 
-class Node{
-  constructor(val){
-    this.prev=null
-    this.val=val
-    this.next=null
-  }
 }
+console.log(sum)
 
-class linkedlist{
-  constructor(){
-    this.head=null
-    this.tail=null
-    this.size=0
-  }
 
-  prepend(val){
-    let node=new Node(val)
-    if(this.size>0){
-      node.next=this.head
-      this.head.prev=node
-      this.head=node
-    }else{
-      this.head=node
-      this.tail=node
+// class Node{
+//   constructor(val){
+//     this.prev=null
+//     this.val=val
+//     this.next=null
+//   }
+// }
+
+// class linkedlist{
+//   constructor(){
+//     this.head=null
+//     this.tail=null
+//     this.size=0
+//   }
+
+//   prepend(val){
+//     let node=new Node(val)
+//     if(this.size>0){
+//       node.next=this.head
+//       this.head.prev=node
+//       this.head=node
+//     }else{
+//       this.head=node
+//       this.tail=node
       
-    }
-    this.size++
-  }
+//     }
+//     this.size++
+//   }
 
-  append(val){
-    let node=new Node(val)
-    if(this.size>0){
-      this.tail.next=node
-      node.prev=this.tail
-      this.tail=node
-    }else{
-      this.head=node
-      this.tail=node
-    }
-    this.size++
-  }
-  reverse(){
-    let prev=null
-    let current=this.head
-    while(current!==null){
-      let temp=current.next
-      current.next=prev
+//   append(val){
+//     let node=new Node(val)
+//     if(this.size>0){
+//       this.tail.next=node
+//       node.prev=this.tail
+//       this.tail=node
+//     }else{
+//       this.head=node
+//       this.tail=node
+//     }
+//     this.size++
+//   }
+//   reverse(){
+//     let prev=null
+//     let current=this.head
+//     while(current!==null){
+//       let temp=current.next
+//       current.next=prev
      
-      if(prev){
-        prev.prev=current
-      }
+//       if(prev){
+//         prev.prev=current
+//       }
     
-      prev=current
-      current=temp
-    }
+//       prev=current
+//       current=temp
+//     }
 
-    this.head=prev
-    this.head.prev=null
-  }
-}
-let list=new linkedlist()
-list.append(10)
-list.append(20)
-list.append(30)
-list.reverse()
-console.log(list.head)
+//     this.head=prev
+//     this.head.prev=null
+//   }
+
+//   mid(){
+//     let slow=this.head
+//     let fast=this.head
+//     while(fast!==null&&fast.next!==null){
+//        slow=slow.next
+//        fast=fast.next.next
+//     }
+//     slow=slow.next
+    
+//   }
+// }
+// let list=new linkedlist()
+// list.append(10)
+// list.append(20)
+// list.append(30)
+
+// list.mid()
+// console.log(list.head)
+
+if(false) 
+  console.log('hai')
+console.log('bye')
