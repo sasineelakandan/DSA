@@ -82,34 +82,54 @@ class linkedlist{
         this.head=prev
         
     }
+    sort() {
+        
+         
+        let current=this.head
+    
+            while (current.next !== null) {
+                if (current.val > current.next.val) {
+                
+                    let temp = current.val;
+                    current.val = current.next.val;
+                    current.next.val = temp;
+                     
+                }
+                current = current.next
+            }
+            
+        }
+      
+       
 }
 
 const list=new linkedlist()
 
-list.append(10)
+list.append(60)
 list.prepend(20)
 list.append(20)
 list.append(40)
 list.append(30)
 list.append(50)
 list.getindex(40)
-list.reverse()
+
+list.sort()
 
 console.log(JSON.stringify(list.head))
 
 
-let k=[1,2,3,5,6,3,2,3,4,5,6,9,10,4,1]
+// let k=[1,2,3,5,6,3,2,3,4,5,6,9,10,4,1]
 
 
-for (let i = 0; i < k.length; i++) {
-   for (let j = 0; j < k.length; j++) {
-    if(k[i]!==k[j]){
-        console.log(`from if ${i} `);
-    }else{
-        console.log("From ELSE :",i);
-    }
-   }
-}
+// for (let i = 0; i < k.length; i++) {
+//    for (let j = 0; j < k.length; j++) {
+//     if(k[i]!==k[j]){
+//         console.log(`from if ${i} `);
+//     }else{
+//         console.log("From ELSE :",i);
+//     }
+//    }
+// }
 // // console.log(a.length);
 // function findUniqRecurse(arr){
 //     if(arr.length===0){
@@ -126,7 +146,9 @@ for (let i = 0; i < k.length; i++) {
 
 // let a = [1, 2, 3, 5, 6, 3, 2, 3, 4, 5, 6, 9, 10, 4, 1];
 
-// // Step 1: Find unique elements
-// let uniqueElements = a.filter((item, index) => a.indexOf(item) === a.lastIndexOf(item));
-
-// console.log("Unique elements:", uniqueElements[0]);
+// Step 1: Find unique elements
+// let uniqueElements = a.filter((val,index)=>{
+//     return a.indexOf(val)===index
+// })
+  
+// console.log("Unique elements:", uniqueElements);
