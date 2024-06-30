@@ -40,13 +40,9 @@ class linkedlist{
         let current=this.head
         let currentindex=0
         while(current.next && current.next.val!==index){
-        //     if(currentindex===index){
-        //        let node=current
-        //        node.next=current.next.next
-            
-        //     }
+        
             current=current.next
-            // currentindex++
+            
 
         }
         
@@ -99,6 +95,25 @@ class linkedlist{
             }
             
         }
+        insert(index,val){
+            let current=this.head
+            let currentindex=0
+            let node=new Node(val)
+        while(current.next!==null){
+            if(currentindex===index-1){
+               let joinnode=current.next
+                current.next=node
+                node.next=joinnode
+            }
+            current=current.next
+            currentindex++
+        }
+           
+         
+        
+         
+        }
+
       
        
 }
@@ -111,9 +126,9 @@ list.append(20)
 list.append(40)
 list.append(30)
 list.append(50)
-list.getindex(40)
+list.insert(4,70)
 
-list.sort()
+
 
 console.log(JSON.stringify(list.head))
 
