@@ -60,5 +60,5 @@ class HashTable {
   table.set("age", 23);
   console.log(table.get("name"));
   console.log(table.get("age"));
-
+  table.remove('name')
   table.print()

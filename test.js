@@ -563,11 +563,382 @@
 
 
 
+// class Node{
+//     constructor(val){
+//         this.val=val
+//         this.next=null
+        
+//     }
+// }
+
+
+// class linkedlist{
+//     constructor(){
+//         this.head=null
+//         this.tail=null
+//         this.size=0
+//     }
+//     prepend(val){
+//         let node=new Node(val)
+//         if(this.size>0){
+//             node.next=this.head
+
+//         }else{
+//             this.tail=node
+//         }
+//         this.head=node
+//         this.size++
+//     }
+//     append(val){
+//         let node=new Node(val)
+//         if(this.size>0){
+//             this.tail.next=node
+//             this.tail=node
+//         }else{
+//             this.head=node
+//             this.tail=node
+//         }
+//         this.size++
+//     }
+//     mid(){
+//         let slow=this.head
+//         let fast=this.head
+//         while(fast!==null&&fast.next!==null){
+//             slow=slow.next
+//             fast=fast.next.next
+//         }
+//         slow.val=slow.next.val
+//         slow.next=fast
+//     }
+//     getindex(index){
+//         let current=this.head
+//         let currentindex=0
+//         while(current){
+//             if(currentindex===index){
+//                 current.val=current.next.val
+//                 current.next=current.next.next
+            
+//             }
+//             current=current.next
+//             currentindex++
+//         }
+//     }
+//     pull(val){
+//         let current=this.head
+        
+//         while(current!==null){
+//           if(current.val===val){
+//             current.val=current.next.val
+//             current.next=current.next.next
+//             return current.val
+//           }
+//           current=current.next
+//         }
+//     }
+// }
+
+// const list=new linkedlist()
+// list.prepend(10)
+// list.prepend(20)
+// list.append(30)
+// list.append(40)
+// list.append(50)
+// list.pull(20)
+// console.log(JSON.stringify(list.head))
+
+
+// class HashTable{
+//     constructor(size){
+//         this.table=new Array(size)
+//         this.size=size
+//     }
+
+//     hash(key){
+//         let total=0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+
+//     set(key,value){
+//         let index=this.hash(key)
+//         if(!this.table[index]){
+//           this.table[index]=[[key,value]]
+//         }else{
+//            const item=this.table[index].find((item)=>item[0]===key) 
+//            if(item){
+//             item[1]=value
+//            }else{
+//             this.table[index].push([key,value])
+//            }
+//         }
+//     }
+//     get(key){
+//         let index=this.hash(key)
+       
+//             console.log(this.table[index][0][1])
+//         }
+//     }
+
+
+
+// const ht=new HashTable(5)
+// ht.set('name','sasi')
+// ht.set('age',25)
+
+// ht.get('age')
+
+
+// class HashTable{
+//     constructor(size){
+//        this.table=new Array(size)
+//        this.size=size
+//     }
+//     hash(key){
+//         let total=0
+//         for(let i=0;i<key.length;i++){
+//            total+= key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+
+//     set(key,val){
+//         let index=this.hash(key)
+//         if(!this.table[index]){
+//             this.table[index]=[[key,val]]
+//         }else{
+//             const item=this.table[index].find((item)=>item[0]===key)
+//             if(item){
+//                 item[1]=val
+//             }else{
+//                 this.table[index].push([key,val])
+//             }
+//         }
+//     }
+//     get(key){
+//         let index=this.hash(key)
+//         console.log(this.table[index][0][1])
+//     }
+
+//     print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//             console.log(i,this.table[i])
+//         }
+//     }
+//     }
+// }
+
+
+
+// class HashTable{
+//     constructor(size){
+//         this.table=new Array(size)
+//         this.size=size
+//     }
+
+//     hash(key){
+//         let total=0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+//      set (key ,val){
+//         let index=this.hash(key)
+//         if(!this.table[index]){
+//             this.table[index]=[[key,val]]
+//         }else{
+//             const item=this.table[index].find((item)=>item[0]===key)
+//             if(item){
+//                 item[1]=val
+//             }else{
+//                 this.table[index].push([key,val])
+//             }
+//         }
+//      }
+//      get(key){
+//         let index=this.hash(key)
+//         console.log(this.table[index][0][1])
+//      }
+
+//      remove(key){
+//         let index=this.hash(key)
+//         let remove=this.table[index]
+//         if(remove){
+//          const item=remove.find((item)=>item[0]===key)
+//          if(item){
+//             remove.splice(remove.indexOf(item),1)
+//         }
+//         }
+      
+       
+//      }
+//      print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i,this.table[i])
+//             }
+//         }
+//      }
+// }
+
+// class HashTable{
+//     constructor(size){
+//         this.table=new Array(size)
+//         this.size=size
+//     }
+
+//     hash(key){
+//         let total=0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+
+//     set(key,val){
+//         let index=this.hash(key)
+//         if(!this.table[index]){
+//             this.table[index]=[[key,val]]
+
+//         }else{
+//             const item=this.table[index].find((item)=>item[0]===key)
+//                 if(item){
+//                   item[1]=val
+//                 }else{
+//                     this.table[index].push([key,val])
+//                 }
+            
+//         }
+//     }
+
+//     get(key){
+//         let index=this.hash(key)
+//         console.log(this.table[index][0][1])
+
+//     }
+
+//     remove(key){
+//       let index=this.hash(key)
+//       let bucket=this.table[index]
+//       if(bucket){
+//         const item=bucket.find((item)=>item[0]===key)
+//         if(item){
+//             bucket.splice(bucket.indexOf(item),1)
+//         }
+//       }
+//     }
+
+
+//     print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//             console.log(i,this.table[i])
+//         }
+//     }
+//     }
+// }
+
+// const ht=new HashTable(5)
+// ht.set('name','sasi')
+// ht.set('age',25)
+// ht.get('name')
+// ht.print()
+
+
+// class que{
+//     constructor(){
+//         this.item=[]
+//     }
+
+//     enque(element){
+//         this.item.push(element)
+
+//     }
+//     deque(){
+//         this.item.shift()
+//     }
+//     peek(){
+//         console.log(this.item[0])
+//     }
+//     size(){
+//         console.log(this.item.length)
+//     }
+//     isempty(){
+//         console.log(this.item.length===0)
+//     }
+
+//     print(){
+//         for(let i=0;i<this.item.length;i++){
+//             console.log(this.item[i])
+//         }
+//     }
+// }
+
+// const q=new que
+// q.enque(10)
+// q.enque(20)
+// q.enque(30)
+// q.enque(40)
+// q.enque(50)
+// q.enque(60)
+// q.deque()
+// q.peek()
+// q.print()
+
+
+// class que{
+//     constructor(){
+//         this.item={}
+//         this.last=0
+//         this.first=0
+//     }
+    
+//     enque(element){
+//         this.item[this.last]=element
+//         this.last++
+//     }
+//     deque(){
+//         const item=this.item[this.first]
+//         delete this.item[this.first]
+//         this.first++
+//     }
+
+//     peek(){
+//         console.log(this.item[this.first])
+//     }
+
+//     size(){
+//         return this.last-this.first
+
+//     }
+
+//     isempty(){
+//         return this.last-this.first===0
+//     }
+
+//     print(){
+//         console.log(this.item)
+//     }
+// }
+
+
+// const q=new que()
+// q.enque(10)
+// q.enque(20)
+// q.enque(30)
+// q.enque(40)
+// q.enque(50)
+// q.enque(60)
+
+// q.print()
+
 class Node{
     constructor(val){
-        this.val=val
-        this.next=null
-        
+        this.val
+        this.next
     }
 }
 
@@ -575,73 +946,63 @@ class Node{
 class linkedlist{
     constructor(){
         this.head=null
-        this.tail=null
+        this.next=null
         this.size=0
     }
-    prepend(val){
-        let node=new Node(val)
-        if(this.size>0){
-            node.next=this.head
 
-        }else{
-            this.tail=node
-        }
-        this.head=node
-        this.size++
-    }
+
     append(val){
         let node=new Node(val)
         if(this.size>0){
             this.tail.next=node
+
             this.tail=node
         }else{
             this.head=node
             this.tail=node
         }
+
         this.size++
     }
-    mid(){
-        let slow=this.head
-        let fast=this.head
-        while(fast!==null&&fast.next!==null){
-            slow=slow.next
-            fast=fast.next.next
-        }
-        slow.val=slow.next.val
-        slow.next=fast
+
+    deque(){
+        this.head=this.head.next
+        this.size--
     }
-    getindex(index){
-        let current=this.head
-        let currentindex=0
-        while(current){
-            if(currentindex===index){
-                current.val=current.next.val
-                current.next=current.next.next
-            
-            }
-            current=current.next
-            currentindex++
-        }
+
+    peek(){
+       console.log(this.head.val) 
     }
-    pull(val){
+    print(){
         let current=this.head
-        
         while(current!==null){
-          if(current.val===val){
-            current.val=current.next.val
-            current.next=current.next.next
-            return current.val
-          }
-          current=current.next
+            console.log(current.val)
+
+            current=current.next
         }
     }
 }
 
 const list=new linkedlist()
-list.prepend(10)
-list.prepend(20)
+list.append(10)
+list.append(20)
 list.append(30)
 list.append(40)
 list.append(50)
-list.pull(20)
-console.log(JSON.stringify(list.head))
+
+
+function reverseStr(Str){
+    let stake=[]
+    let STR=''
+    for(let i=0;i<Str.length;i++){
+        arr.push(Str[i])
+
+    }
+    console.log(arr)
+  for(i=0;i<Str.length;i++){
+    STR+=arr.pop()
+  }
+   console.log(STR) 
+}
+
+reverseStr('sasi')
