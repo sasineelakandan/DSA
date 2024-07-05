@@ -99,3 +99,127 @@ console.log(JSON.stringify(list.head))
 
 // console.log(count)
 
+// function insertSort(arr){
+//     for(let i=1;i<arr.length;i++){
+//         let insert=arr[i]
+//         let j=i-1
+//         while(j>=0&&arr[j]>insert){
+//             arr[j+1]=arr[j]
+//             j--
+//         }
+//         arr[j+1]=insert
+//     }
+// }
+
+// let arr=[-8,-3,-1,-5,8,9,3,2]
+
+// insertSort(arr)
+// console.log(arr)
+
+// class HashTable{
+//     constructor(size){
+//         this.table=new Array(size)
+//         this.size=size
+//     }
+
+
+//     hash(key){
+//         let total=0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+
+//         return total%this.size
+       
+//     }
+    
+//     lenearproping(index){
+//         let ind=index
+//         let i=1
+//         while(index<this.size){
+//             index=ind+i
+//             if(this.table[index]===undefined){
+//                 return index
+//             }
+//             i++
+//         }
+//         return -1
+//     }
+//     set(key,val){
+//         let index=this.hash(key)
+//         index=this.lenearproping(index)
+//     this.table[index]=[key,val]
+       
+        
+//     }
+
+    // get(key){
+    //     let index=this.hash(key)
+
+    //     return console.log(this.table[index][0][1])
+    // }
+
+    // remove(key){
+    //     let index=this.hash(key)
+    //     let bucket=this.table[index]
+    //     if(bucket){
+    //         const item=bucket.find((item)=>item[0]===key)
+    //         if(item){
+    //             bucket.splice(bucket.indexOf(item),1)
+    //         }
+    //     }
+    // }
+
+//     print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i,this.table[i])
+//             }
+//         }
+//     }
+// }
+
+
+// const ht=new HashTable(50)
+// ht.set('name','sasi')
+// ht.set('age',23)
+
+// ht.print()
+
+// function bSort(arr){
+//     let swapped
+//     do{
+//         swapped=false
+//         for(let i=0;i<arr.length-1;i++){
+//             if(arr[i]>arr[i+1]){
+//                 let temp=arr[i]
+//                 arr[i]=arr[i+1]
+//                 arr[i+1]=temp
+//                 swapped=true
+//             }
+          
+//         }
+//     }while(swapped){
+//         return arr
+//     }
+// }
+
+// let arr=[-1,-2,-4,-8,8,4,1,3]
+
+// console.log(bSort(arr))
+
+
+// function stake(Str){
+//     let stake=[]
+// for(i=0;i<Str.length;i++){
+//     stake.push(Str[i])
+// }
+// let str=''
+//  for(let i=0;i<Str.length;i++){
+//     str+=stake.pop()
+//  }
+
+//  return str
+// }
+
+// console.log(stake('sasi'))

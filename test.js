@@ -1,573 +1,136 @@
-// class Node{
-//     constructor(val){
-//         this.val=val
-//         this.next=null
-//     }
-// }
-
-// class LinkedList{
-//     constructor(){
-//         this.head=null
-//         this.tail=null
-//         this.size=0
-//     }
-
-//     prepend(val){
-//         let node= new Node(val)
-//         if(this.size>0){
-//             node.next=this.head
+// function bSort(arr){
+//     let swapped
+//     do{
+//         swapped=false
+//         for(let i=0;i<arr.length-1;i++){
+//             if(arr[i]>arr[i+1]){
+//              let temp=arr[i]
+//              arr[i]=arr[i+1]
+//              arr[i+1]=temp
+//              swapped=true
+//             }
            
-//         }else{
-//             this.tail=node
-//         }
-//         this.head=node
-//         this.size++
-
-//     }
-//     append(val){
-//         let node=new Node(val)
-//         if(this.size>0){
-//             this.tail.next=node
-//             this.tail=node
-//         }else{
-//             this.head=node
-//             this.tail=node
-//         }
-//         this.size++
-//     }
-//     pop(){
-//         let current=this.head
-//         while(current.next!==this.tail){
-//             current=current.next
-//         }
-//         current.next=null
-//         this.tail=current
-//         this.size--
-//     }
-//     shift(){
-//         this.head=this.head.next
-//         this.size--
-//     }
-//     getindex(index){
-//        let current=this.head
-//        let currentindex=0
-//        while(current){
-//         if(currentindex===index){
-//             return current.val
-//         }
-//         current=current.next
-//         currentindex++
-//        }
-//     }
-//     midval(){
-//         let slow=this.head
-//         let fast=this.head
-//         while(fast!==null&&fast.next==null){
-//             slow=slow.next
-//             fast=fast.next.next
-
-//         }
-//         console.log(slow.val)
-//     }
-//     pull(val){
-        
-//         let current=this.head
-//         while(current!==null&&current.next!==null){
-//             if(current.next.val===val){
-//                 current.next=current.next.next
-//                 this.size--
-//             }else{
-//                 current=current.next
-//             }
-//         }
-//     }
-//     reverse(){
-//         let current=this.head
-//         let prev=null
-
-//         while(current){
-//             let temp=current.next
-//             current.next=prev
-//             prev=current
-//             current=temp
-//         }
-//         this.head=prev
-//     }
-    
-    
-// }
-
-// const list=new LinkedList()
-// list.prepend(10)
-// list.append(20)
-// list.append(30)
-// list.append(40)
-// list.append(50)
-// list.append(60)
-
-// console.log(list.getindex(4))
-// list.reverse()
-// console.log(JSON.stringify(list.head))
-
-// class ListNode {
-//     constructor(value) {
-//         this.value = value;
-//         this.next = null;
-//     }
-// }
-
-// class LinkedList {
-//     constructor() {
-//         this.head = null;
-//     }
-
-//     append(value) {
-//         if (!this.head) {
-//             this.head = new ListNode(value);
-//         } else {
-//             let current = this.head;
-//             while (current.next) {
-//                 current = current.next;
-//             }
-//             current.next = new ListNode(value);
-//         }
-//     }
-
-//     print() {
-//         let current = this.head;
-//         let output = [];
-//         while (current) {
-//             output.push(current.value);
-//             current = current.next;
-//         }
-//         console.log(output.join(" -> "));
-//     }
-
-//     reverseRecursive() {
-//         this.head = this._reverseRecursiveHelper(this.head);
-//     }
-
-//     _reverseRecursiveHelper(node) {
-//         // Base case: if the list is empty or has only one node
-//         if (node === null || node.next === null) {
-//             return node;
-//         }
-
-//         // Recursively reverse the rest of the list
-//         let newHead = this._reverseRecursiveHelper(node.next);
-
-//         // Reverse the pointers
-//         node.next.next = node;
-//         node.next = null;
-
-//         return newHead;
-//     }
-// }
-
-// // Example usage
-// let list = new LinkedList();
-// list.append(1);
-// list.append(2);
-// list.append(3);
-// list.append(4);
-
-// console.log("Original List:");
-// list.print();
-
-// list.reverseRecursive();
-
-// console.log("Reversed List:");
-// list.print();
-
-// class Node{
-//     constructor(val){
-//         this.val=val
-//         this.next=null
-        
-//     }
-// }
-
-// class LinkedList{
-//     constructor(){
-//         this.head=null
-//         this.tail=null
-//         this.size=0
-//     }
-
-//     prepend(val){
-//      let node= new Node(val)
-//      if(this.size>0){
-//         node.next=this.head
-//      }else{
-//         this.tail=node
-//      }
-//      this.head=node
-//      this.size++
-//     }
-//     append(val){
-//         let node= new Node(val)
-//         if(this.size>0){
-//             this.tail.next=node
-//             this.tail=node
-//         }else{
-//             this.head=node
-//             this.tail=node
-//         }
-//         this.size++
-//     }
-//     pop(){
-//         let current=this.head
-//         while(current.next!==this.tail){
-//             current=current.next
-//         }
-//         current.next=null
-//         this.tail=current
-//         this.size--
-//     }
-//     shift(){
-//         this.head=this.head.next
-//         this.size--
-//     }
-//     pull(val){
-//         let current=this.head
-//         while(current!==null&&current.next!==null){
-//             if(current.next.val===val){
-//                 current.next=current.next.next
-//                 this.size--
-//             }else{
-//                 current=current.next
-//             }
-//         }
-//     }
-//     getindex(index){
-//         let current=this.head
-//         let currentindex=0
-//         while(current){
-//             if(currentindex==index){
-//                 return current.val
-//             }
-//             current=current.next
-//             currentindex++
-//         }
-//     }
-//     midval(){
-//         let slow=this.head
-//         let fast=this.head
-//         while(fast!==null&&fast.next!==null){
-//             slow=slow.next
-//             fast=fast.next.next
-//         }
-//         console.log(slow.val)
-//     }
-
-//     reverse(){
-//         let current=this.head
-//         let prev=null
-//         while(current){
-//             let temp=current.next
-//             current.next=prev
-//             prev=current
-//             current=temp
-//         }
-//         this.head=prev
-//     }
-// }
-
-// const list=new LinkedList()
-// list.prepend(10)
-// list.append(20)
-// list.append(30)
-// list.append(40)
-// list.append(50)
-// list.append(60)
-// console.log(list.getindex(4))
-// list.midval()
-// list.reverse()
-// console.log(JSON.stringify(list.head))
-
-// function binarysearch(arr,t){
-//     arr.sort((a,b)=>a-b)
-//     leftindex=0
-//     rightindex=arr.length-1
-//     while(leftindex<=rightindex){
-//         let midval=Math.floor((leftindex+rightindex)/2)
-//         if(arr[midval]===t){
-//             arr[midval]=40
-//             return arr
-//         }
-//         if(t<arr[midval]){
-//             rightindex=midval-1
-
-//         }else{
-//             leftindex=midval+1
-//         }
-//     }
-// }
-
-// console.log(binarysearch([92,32,43,56,76],76))
-
-
-// function recursionbinarysearch(arr,t){
-//     return search(arr,t,0,arr.length-1)
-// }
-
-// function search(arr,t,leftindex,rightindex){
-//     arr.sort((a,b)=>(a-b))
-//     if(leftindex>rightindex){
-//         return -1
-//     }
-//     let midval=Math.floor((leftindex+rightindex)/2)
-//     if(arr[midval]===t){
-//         return midval
-//     }
-//     if(t<arr[midval]){
-//         return search(arr,t,leftindex,rightindex-1)
-//     }else{
-//         return search(arr,t,leftindex+1,rightindex)
-//     }
-// }
-
-// console.log(recursionbinarysearch([1,2,43,4,5],5))
-
-
-
-// function recursion(n){
-//     if(n===0){
-//         return 1
-//     }
-
-//     return n*recursion(n-1)
-// }
-
-// console.log(recursion(5))
-
-
-// function fibnacci(n){
-//     if(n===0){
-//         return 0
-//     }
-//     if(n===1){
-//         return 1
-//     }
-
-//     return fibnacci(n-1)+fibnacci(n-2)
-// }
-
-// console.log(fibnacci(10))
-
-// function sum(n){
-//     if(n==0){
-//         return 0
-//     }
-//     return n+sum(n-1)
-// }
-
-
-// console.log(sum(5))
-// a=[1,2,3,4,5]
-// let sum=0
-//   for(i=0;i<a.length;i++){
-//     sum=sum+a[i]
-//   }
-//   console.log(sum)
-
-
-
-// class Node{
-//     constructor(val){
-//         this.prev=null
-//         this.val=val
-//         this.next=null
-//     }
-   
-
-// }
-
-// class LinkedList{
-//     constructor(){
-//         this.head=null
-//         this.tail=null
-//         this.size=0
-//     }
-
-//     prepend(val){
-//         let node=new Node(val)
-//         if(this.size>0){
-//             node.next=this.head
-          
-//         }else{
-//             this.tail=node
-//         }
-//         this.head=node
-//         this.prev=null
-//         this.size++
-//     }
-
-//     append(val) {
-//         let node = new Node(val);
-//         if (this.size > 0) {
-//             this.tail.next = node;
-//             node.prev = this.tail; 
-//             this.tail = node;
-//         } else {
-//             this.head = node;
-//             this.tail = node;
-//             node.prev = null; 
-//         }
-//         this.size++
-    
-//     }
-    
-// }
-
-// let list=new LinkedList()
-
-// list.append(10)
-// list.append(20)
-// console.log(JSON.stringify(list))
-
-
-// class Node {
-//     constructor(val) {
-//         this.val = val;
-//         this.next = null;
-//         this.prev = null;
-//     }
-// }
-
-// class LinkedList {
-//     constructor() {
-//         this.head = null;
-//         this.tail = null;
-//         this.size = 0;
-//     }
-
-//     append(val) {
-//         let node = new Node(val);
-//         if (this.size > 0) {
-//             this.tail.next = node;
-//             node.prev = this.tail;
-//             this.tail = node;
-//         } else {
-//             this.head = node;
-//             this.tail = node;
-//         }
-//         this.size++;
-//     }
-
-   
-// }
-
-// // Example usage:
-// let list = new LinkedList();
-// list.append(1);
-// list.append(2);
-// list.append(3);
-
-// console.log(list);  
-
-
-// class Node{
-//     constructor(val){
-//         this.val=val
-//         this.next=null
-//     }
-// }
-
-
-// class LinkedList{
-//     constructor(){
-//         this.head=null
-//         this.tail=null
-//         this.size=0
-//     }
-
-//     append(val){
-//         let node=new Node(val)
-//         if(this.size>0){
-//             this.tail.next=node
-//             this.tail=node
-//         }else{
-//             this.head=node
-//             this.tail=node
-//         }
-//         this.size++
-//     }
-//     mid(){
-//         let slow=this.head
-//         let fast=this.head
-        
-//         while(fast!==null&&fast.next!==null){
             
-//             slow =slow.next
-//             fast=fast.next.next
-       
 //         }
-
-//         slow.val=slow.next.val
-//         slow.next=fast
-        
-       
-
-        
+//     }while(swapped){
+//         return arr
 //     }
-//     getindex(val){
-//         let current=this.head
-//         let currentindex=0
-//         while(current){
-//             if(currentindex===val){
-//                current.val=current.next.val
-//                current.next=null
-//             }
-//             current=current.next
-//             currentindex++
+// }
+// function insertSort(arr){
+//     for(let i=1;i<arr.length;i++){
+//         let insert=arr[i]
+//         let j=i-1
+//         while(j>=0&&arr[j]>insert){
+//             arr[j+1]=arr[j]
+//             j--
 //         }
-//         this.size--
-//     }
-
-//     sort() {
-//         let current = this.head;
-
-//         while (current !== null) {
-//             let index = current.next;
-//             let min = current;
-
-//             while (index !== null) {
-//                 if (index.val < min.val) {
-//                     min = index;
-//                 }
-//                 index = index.next;
-//             }
-
-//             if (min !== current) {
-//                 let temp = current.val;
-//                 current.val = min.val;
-//                 min.val = temp;
-//             }
-
-//             current = current.next;
-//         }
+//         arr[j+1]=insert
 //     }
 // }
 
-// const list=new LinkedList()
 
-// list.append(50)
-// list.append(20)
-// list.append(40)
-// list.append(30)
-// list.append(10)
-// list.sort()
-// console.log(JSON.stringify(list.head))
+// let arr=[-4,-8,-88,8,2,5,9,7]
+
+// insertSort(arr)
+// console.log(arr)
+
+// function quickSort(arr){
+//     if(arr.length<=1){
+//         return arr
+//     }
+
+//     let pointer=arr[arr.length-1]
+//     let left=[]
+//     let rigth=[]
+//     for(i=0;i<arr.length-1;i++){
+//         if(arr[i]<pointer){
+//             left.push(arr[i])
+//         }else{
+//             rigth.push(arr[i])
+//         }
+//     }
+//     return [...quickSort(left),pointer,...quickSort(rigth)]
+// }
+
+// function mergeSort(arr){
+//   if(arr.length<=1){
+//     return arr
+//   }
+
+//   let mid=Math.floor(arr.length/2)
+//   let left=mergeSort(arr.slice(0,mid))
+//   let right=mergeSort(arr.slice(mid))
+
+//   return merge(left,right)
+// }
+
+
+// function merge(arr1,arr2){
+//     let res=[]
+//     while(arr1.length&&arr2.length){
+//         if(arr1[0]<arr2[0]){
+//           res.push(arr1.shift())
+//         }else{
+//             res.push(arr2.shift())
+//         }
+//     }
+//     return [...res,...arr1,...arr2]
+// }
+
+// function selectionsort(arr){
+//     for(let i=0;i<arr.length;i++){
+//         for(let j=i+1;j<arr.length;j++){
+//             if(arr[i]>arr[j]){
+//                 let temp=arr[i]
+//                 arr[i]=arr[j]
+//                 arr[j]=temp
+//             }
+//         }
+//     }
+//     return arr
+// }
 
 
 
+// let arr=[-4,-8,-88,8,2,5,9,7]
+
+// console.log(selectionsort(arr))
+
+// class que{
+//     constructor(){
+//         this.item=[]
+//     }
+
+//     enque(ele){
+//         this.item.push(ele)
+//     }
+//     deque(){
+//         this.item.shift()
+//     }
+//     peek(){
+//         console.log(this.item[0])
+//     }
+//     print(){
+//         console.log(this.item)
+//     }
+
+// }
+
+// const q=new que()
+// q.enque(10)
+// q.enque(20)
+// q.enque(30)
+// q.enque(40)
+// q.enque(50)
+
+// q.deque()
+// q.peek()
+// q.print()
 
 // class Node{
 //     constructor(val){
 //         this.val=val
 //         this.next=null
-        
 //     }
 // }
 
@@ -578,19 +141,9 @@
 //         this.tail=null
 //         this.size=0
 //     }
-//     prepend(val){
-//         let node=new Node(val)
-//         if(this.size>0){
-//             node.next=this.head
 
-//         }else{
-//             this.tail=node
-//         }
-//         this.head=node
-//         this.size++
-//     }
-//     append(val){
-//         let node=new Node(val)
+//     enque(ele){
+//         let node=new Node(ele)
 //         if(this.size>0){
 //             this.tail.next=node
 //             this.tail=node
@@ -600,409 +153,288 @@
 //         }
 //         this.size++
 //     }
-//     mid(){
-//         let slow=this.head
-//         let fast=this.head
-//         while(fast!==null&&fast.next!==null){
-//             slow=slow.next
-//             fast=fast.next.next
-//         }
-//         slow.val=slow.next.val
-//         slow.next=fast
+
+//     deque(){
+//         this.head=this.head.next
+//         this.size--
 //     }
-//     getindex(index){
-//         let current=this.head
-//         let currentindex=0
-//         while(current){
-//             if(currentindex===index){
-//                 current.val=current.next.val
-//                 current.next=current.next.next
-            
-//             }
-//             current=current.next
-//             currentindex++
-//         }
+
+//     peek(){
+//         console.log(this.head.val)
 //     }
-//     pull(val){
+//     print(){
 //         let current=this.head
-        
 //         while(current!==null){
-//           if(current.val===val){
-//             current.val=current.next.val
-//             current.next=current.next.next
-//             return current.val
-//           }
-//           current=current.next
+//             console.log(current.val)
+//             current=current.next
 //         }
 //     }
 // }
 
 // const list=new linkedlist()
-// list.prepend(10)
-// list.prepend(20)
-// list.append(30)
-// list.append(40)
-// list.append(50)
-// list.pull(20)
-// console.log(JSON.stringify(list.head))
+
+// list.enque(10)
+// list.enque(20)
+// list.enque(30)
+// list.enque(40)
+// list.enque(50)
+// list.deque()
+// list.print()
 
 
-// class HashTable{
-//     constructor(size){
-//         this.table=new Array(size)
-//         this.size=size
-//     }
-
-//     hash(key){
-//         let total=0
-//         for(let i=0;i<key.length;i++){
-//             total+=key.charCodeAt(i)
-//         }
-//         return total%this.size
-//     }
-
-//     set(key,value){
-//         let index=this.hash(key)
-//         if(!this.table[index]){
-//           this.table[index]=[[key,value]]
-//         }else{
-//            const item=this.table[index].find((item)=>item[0]===key) 
-//            if(item){
-//             item[1]=value
-//            }else{
-//             this.table[index].push([key,value])
-//            }
-//         }
-//     }
-//     get(key){
-//         let index=this.hash(key)
-       
-//             console.log(this.table[index][0][1])
-//         }
-//     }
-
-
-
-// const ht=new HashTable(5)
-// ht.set('name','sasi')
-// ht.set('age',25)
-
-// ht.get('age')
-
-
-// class HashTable{
-//     constructor(size){
-//        this.table=new Array(size)
-//        this.size=size
-//     }
-//     hash(key){
-//         let total=0
-//         for(let i=0;i<key.length;i++){
-//            total+= key.charCodeAt(i)
-//         }
-//         return total%this.size
-//     }
-
-//     set(key,val){
-//         let index=this.hash(key)
-//         if(!this.table[index]){
-//             this.table[index]=[[key,val]]
-//         }else{
-//             const item=this.table[index].find((item)=>item[0]===key)
-//             if(item){
-//                 item[1]=val
-//             }else{
-//                 this.table[index].push([key,val])
-//             }
-//         }
-//     }
-//     get(key){
-//         let index=this.hash(key)
-//         console.log(this.table[index][0][1])
-//     }
-
-//     print(){
-//         for(let i=0;i<this.table.length;i++){
-//             if(this.table[i]){
-//             console.log(i,this.table[i])
-//         }
-//     }
-//     }
-// }
-
-
-
-// class HashTable{
-//     constructor(size){
-//         this.table=new Array(size)
-//         this.size=size
-//     }
-
-//     hash(key){
-//         let total=0
-//         for(let i=0;i<key.length;i++){
-//             total+=key.charCodeAt(i)
-//         }
-//         return total%this.size
-//     }
-//      set (key ,val){
-//         let index=this.hash(key)
-//         if(!this.table[index]){
-//             this.table[index]=[[key,val]]
-//         }else{
-//             const item=this.table[index].find((item)=>item[0]===key)
-//             if(item){
-//                 item[1]=val
-//             }else{
-//                 this.table[index].push([key,val])
-//             }
-//         }
-//      }
-//      get(key){
-//         let index=this.hash(key)
-//         console.log(this.table[index][0][1])
-//      }
-
-//      remove(key){
-//         let index=this.hash(key)
-//         let remove=this.table[index]
-//         if(remove){
-//          const item=remove.find((item)=>item[0]===key)
-//          if(item){
-//             remove.splice(remove.indexOf(item),1)
-//         }
-//         }
-      
-       
-//      }
-//      print(){
-//         for(let i=0;i<this.table.length;i++){
-//             if(this.table[i]){
-//                 console.log(i,this.table[i])
-//             }
-//         }
-//      }
-// }
-
-// class HashTable{
-//     constructor(size){
-//         this.table=new Array(size)
-//         this.size=size
-//     }
-
-//     hash(key){
-//         let total=0
-//         for(let i=0;i<key.length;i++){
-//             total+=key.charCodeAt(i)
-//         }
-//         return total%this.size
-//     }
-
-//     set(key,val){
-//         let index=this.hash(key)
-//         if(!this.table[index]){
-//             this.table[index]=[[key,val]]
-
-//         }else{
-//             const item=this.table[index].find((item)=>item[0]===key)
-//                 if(item){
-//                   item[1]=val
-//                 }else{
-//                     this.table[index].push([key,val])
-//                 }
-            
-//         }
-//     }
-
-//     get(key){
-//         let index=this.hash(key)
-//         console.log(this.table[index][0][1])
-
-//     }
-
-//     remove(key){
-//       let index=this.hash(key)
-//       let bucket=this.table[index]
-//       if(bucket){
-//         const item=bucket.find((item)=>item[0]===key)
-//         if(item){
-//             bucket.splice(bucket.indexOf(item),1)
-//         }
-//       }
-//     }
-
-
-//     print(){
-//         for(let i=0;i<this.table.length;i++){
-//             if(this.table[i]){
-//             console.log(i,this.table[i])
-//         }
-//     }
-//     }
-// }
-
-// const ht=new HashTable(5)
-// ht.set('name','sasi')
-// ht.set('age',25)
-// ht.get('name')
-// ht.print()
-
-
-// class que{
+// class stake{
 //     constructor(){
 //         this.item=[]
 //     }
 
-//     enque(element){
-//         this.item.push(element)
-
+//     enque(ele){
+//         this.item.push(ele)
 //     }
 //     deque(){
-//         this.item.shift()
+//         this.item.pop()
 //     }
 //     peek(){
 //         console.log(this.item[0])
 //     }
-//     size(){
-//         console.log(this.item.length)
-//     }
-//     isempty(){
-//         console.log(this.item.length===0)
-//     }
-
-//     print(){
-//         for(let i=0;i<this.item.length;i++){
-//             console.log(this.item[i])
-//         }
-//     }
-// }
-
-// const q=new que
-// q.enque(10)
-// q.enque(20)
-// q.enque(30)
-// q.enque(40)
-// q.enque(50)
-// q.enque(60)
-// q.deque()
-// q.peek()
-// q.print()
-
-
-// class que{
-//     constructor(){
-//         this.item={}
-//         this.last=0
-//         this.first=0
-//     }
-    
-//     enque(element){
-//         this.item[this.last]=element
-//         this.last++
-//     }
-//     deque(){
-//         const item=this.item[this.first]
-//         delete this.item[this.first]
-//         this.first++
-//     }
-
-//     peek(){
-//         console.log(this.item[this.first])
-//     }
-
-//     size(){
-//         return this.last-this.first
-
-//     }
-
-//     isempty(){
-//         return this.last-this.first===0
-//     }
-
 //     print(){
 //         console.log(this.item)
 //     }
 // }
 
+// const que=new stake()
 
-// const q=new que()
+// que.enque(10)
+// que.enque(20)
+// que.enque(30)
+// que.deque()
+// que.print()
+
+
+// class Node{
+//     constructor(val){
+//         this.val=val
+//         this.next=null
+//     }
+// }
+
+
+// class linkedlist{
+//     constructor(){
+//         this.head=null
+//         this.tail=null
+//         this.size=0
+//     }
+
+//     prepend(val){
+//         let node=new Node(val)
+//         if(thiis.size>0){
+//             node.next=this.head
+//             this.head=node
+//         }else{
+//             this.head=node
+//             this.tail=node
+//         }
+//         this.size++
+//     }
+
+//     delete(){
+//         this.head=this.head.next
+//         this.size--
+//     }
+
+//     peek(){
+//         console.log(this.head.val)
+//     }
+// }
+
+// class Hashtable{
+//     constructor(size){
+//         this.table=new Array(size)
+//         this.size=size
+//     }
+//     hash(key){
+//         let total=0
+//         for(let i=0;i<key.length;i++){
+//             total+=key.charCodeAt(i)
+//         }
+//         return total%this.size
+//     }
+//     set(key,val){
+//         let index=this.hash(key)
+//         if(!this.table[index]){
+//             this.table[index]=[[key,val]]
+//         }else{
+//             this.table[index].push([key,val])
+//         }
+//     }
+
+//     get(key){
+//         let index=this.hash(key)
+//         return console.log(this.table[index][0][1])
+//     }
+//     remove(key){
+//      let index=this.hash(key)
+//      let bucket=this.table[index]
+//      if(bucket){
+//         const item=bucket.find((item)=>item[0]===key)
+//         if(item){
+//             bucket.splice(bucket.indexOf(item),1)
+//         }
+//      }
+//     }
+
+//     print(){
+//         for(let i=0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i,this.table[i])
+//             }
+           
+//         }
+//     }
+// }
+
+// const ht=new Hashtable(5)
+
+// ht.set('name','sasi')
+// ht.set('age',25)
+
+// ht.print()
+
+
+
+
+// class crdrfgq{
+//     constructor(size){
+//         this.item=new Array(size)
+//         this.size=size
+//         this.curentlength=0
+//         this.front=0
+//         this.rear=0
+//     }
+
+//     enque(ele){
+       
+//         this.item[this.rear] = ele
+
+//         this.rear=(this.rear+1)%this.size
+        
+//         this.curentlength++
+//     }
+
+//     deque(){
+//         let remove = this.item[this.front]
+//         this.front=(this.front+1)%this.size
+//         this.curentlength--
+//         return remove
+    
+//     }
+
+//     print(){
+//         let queue=""
+//         for(let i=0;i<this.curentlength;i++){
+//             queue+=`${this.item[(this.front+i)%this.size]} `
+//         }
+//         console.log(queue)
+//     }
+// }
+
+// const q=new crdrfgq(5)
+
 // q.enque(10)
 // q.enque(20)
 // q.enque(30)
 // q.enque(40)
-// q.enque(50)
-// q.enque(60)
-
+// q.enque(80)
+// q.print()
+// console.log(q.deque())
 // q.print()
 
-class Node{
-    constructor(val){
-        this.val
-        this.next
+
+// function mergeSort(arr){
+//   if(arr.length<=1){
+//     return arr
+//   }
+
+//   let mid=Math.floor(arr.length/2)
+//   let left=mergeSort(arr.slice(0,mid))
+//   let right=mergeSort(arr.slice(mid))
+//   return merge(left,right)
+// }
+
+
+// function merge(arr1,arr2){
+//     let res=[]
+//     while(arr1.length&&arr2.length){
+//         if(arr1[0]<=arr2[0]){
+//             res.push(arr1.shift())
+//         }else{
+//             res.push(arr2.shift())
+//         }
+//     }
+
+//     return [...res,...arr1,...arr2]
+// }
+
+// let arr=[-1,-3,-2,-5,8,3,4,2]
+// console.log(mergeSort(arr))
+
+
+// function quickSort(arr){
+//     if(arr.length<=1){
+//         return arr
+//     }
+//     let pivot=arr[arr.length-1]
+//     let left=[]
+//     let right=[]
+//     for(i=0;i<arr.length-1;i++){
+//         if(arr[i]<pivot){
+//             left.push(arr[i])
+//         }else{
+//             right.push(arr[i])
+//         }
+//     }
+//     return [...quickSort(left),pivot,...quickSort(right)]
+// }
+
+// let arr=[-1,-3,-2,-5,8,3,4,2]
+// console.log(quickSort(arr))
+
+
+class circularq{
+    constructor(size){
+        this.item=new Array(size)
+        this.size=size
+        this.currentlength=0
+        this.front=0
+        this.rear=0
     }
-}
 
-
-class linkedlist{
-    constructor(){
-        this.head=null
-        this.next=null
-        this.size=0
-    }
-
-
-    append(val){
-        let node=new Node(val)
-        if(this.size>0){
-            this.tail.next=node
-
-            this.tail=node
-        }else{
-            this.head=node
-            this.tail=node
-        }
-
-        this.size++
+    enque(ele){
+      this.item[this.rear]=ele
+      this.rear=(this.rear+1)%this.size
+      this.currentlength++
     }
 
     deque(){
-        this.head=this.head.next
-        this.size--
+        this.front=(this.front+1)%this.size
+        this.currentlength--
     }
 
-    peek(){
-       console.log(this.head.val) 
-    }
     print(){
-        let current=this.head
-        while(current!==null){
-            console.log(current.val)
-
-            current=current.next
+        let queue=''
+        for(let i=0;i<this.currentlength;i++){
+            queue+=` ${this.item[this.front+ i]}`
         }
+
+        console.log(queue)
     }
 }
 
-const list=new linkedlist()
-list.append(10)
-list.append(20)
-list.append(30)
-list.append(40)
-list.append(50)
-
-
-function reverseStr(Str){
-    let stake=[]
-    let STR=''
-    for(let i=0;i<Str.length;i++){
-        arr.push(Str[i])
-
-    }
-    console.log(arr)
-  for(i=0;i<Str.length;i++){
-    STR+=arr.pop()
-  }
-   console.log(STR) 
-}
-
-reverseStr('sasi')
+let cq=new circularq(5)
+cq.enque(10)
+cq.enque(20)
+cq.enque(30)
+cq.enque(40)
+cq.enque(50)
+cq.deque()
+cq.print()
