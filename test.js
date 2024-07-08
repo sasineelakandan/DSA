@@ -134,11 +134,145 @@
 
 
 
-let str='gtrrtyyyee'
+// let str='gtrrtyyyee'
 
-let  frequency={}
-for(let i=0;i<str.length;i++){
-    if(frequency[str[i]]) frequency[str[i]]++
-    else frequency[str[i]]=1
+// let  frequency={}
+// for(let i=0;i<str.length;i++){
+//     if(frequency[str[i]]) frequency[str[i]]++
+//     else frequency[str[i]]=1
+// }
+// console.log(frequency)
+
+
+class Node{
+    constructor(val){
+        this.val=val
+        this.left=null
+        this.right=null
+
+    }
 }
-console.log(frequency)
+
+
+class bst{
+    constructor(){
+        this.root=null
+    }
+
+    insert(val){
+        let node=new Node(val)
+      if(this.root==null){
+        this.root=node
+        return this
+      }else{
+        let current=this.root
+        while(true){
+            if(val<current.val){
+                if(current.left==null){
+                    current.left=node
+                    return this
+                }else{
+                    current=current.left
+                }
+            }else{
+                if(current.right==null){
+                    current.right=node
+                    return this
+                }else{
+                    current=current.right
+                }
+            }
+        }
+      }
+    }
+
+    find(val){
+        let current=this.root
+        let found=false
+        while(current&&!found){
+            if(val<current.val){
+                current=current.left
+            }
+            else if(current.val<val){
+                current=current.right
+            }else{
+                found=true
+                return current
+            }
+        }
+    }
+    bfs(){
+        let node=this.root
+        let data=[]
+       let queue=[]
+       queue.push(node)
+       while(queue.length){
+        node=queue.shift()
+        data.push(node.val)
+        if(node.left){
+            queue.push(node.left)
+        }
+        if(node.right){
+            queue.push(node.right)
+        }
+       }
+       return data
+    }
+
+    dfs(){
+       let current=this.root
+       let data=[]
+       function tr(node){
+        
+         if(node.left){
+            tr(node.left)
+         }
+       
+         if(node.right){
+            tr(node.right)
+         }
+         data.push(node.val)
+       }
+       tr(current)
+       return data
+    }
+
+    finddegree(node){
+        let degree=0
+        
+        if(node.left){
+            degree+=1
+        }
+        if(node.right){
+            degree+=1
+        }
+
+        return degree
+    }
+
+    findHight(node=this.root){
+        
+        if(node==null){
+            return 0
+        }
+
+        let lefthight=this.findHight(node.left)
+        let righthight=this.findHight(node.right)
+        return Math.max(lefthight,righthight)+1
+    }
+}
+const bt=new bst()
+
+bt.insert(50)
+bt.insert(90)
+bt.insert(70)
+bt.insert(40)
+bt.insert(30)
+bt.insert(20)
+bt.insert(60)
+
+
+
+
+console.log(bt.bfs())
+console.log(JSON.stringify(bt.root))
