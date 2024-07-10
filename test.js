@@ -144,135 +144,195 @@
 // console.log(frequency)
 
 
-class Node{
-    constructor(val){
-        this.val=val
-        this.left=null
-        this.right=null
+// class Node{
+//     constructor(val){
+//         this.val=val
+//         this.left=null
+//         this.right=null
 
-    }
-}
+//     }
+// }
 
 
-class bst{
-    constructor(){
-        this.root=null
-    }
+// class bst{
+//     constructor(){
+//         this.root=null
+//     }
 
-    insert(val){
-        let node=new Node(val)
-      if(this.root==null){
-        this.root=node
-        return this
-      }else{
-        let current=this.root
-        while(true){
-            if(val<current.val){
-                if(current.left==null){
-                    current.left=node
-                    return this
-                }else{
-                    current=current.left
-                }
-            }else{
-                if(current.right==null){
-                    current.right=node
-                    return this
-                }else{
-                    current=current.right
-                }
-            }
-        }
-      }
-    }
+//     insert(val){
+//         let node=new Node(val)
+//       if(this.root==null){
+//         this.root=node
+//         return this
+//       }else{
+//         let current=this.root
+//         while(true){
+//             if(val<current.val){
+//                 if(current.left==null){
+//                     current.left=node
+//                     return this
+//                 }else{
+//                     current=current.left
+//                 }
+//             }else{
+//                 if(current.right==null){
+//                     current.right=node
+//                     return this
+//                 }else{
+//                     current=current.right
+//                 }
+//             }
+//         }
+//       }
+//     }
 
-    find(val){
-        let current=this.root
-        let found=false
-        while(current&&!found){
-            if(val<current.val){
-                current=current.left
-            }
-            else if(current.val<val){
-                current=current.right
-            }else{
-                found=true
-                return current
-            }
-        }
-    }
-    bfs(){
-        let node=this.root
-        let data=[]
-       let queue=[]
-       queue.push(node)
-       while(queue.length){
-        node=queue.shift()
-        data.push(node.val)
-        if(node.left){
-            queue.push(node.left)
-        }
-        if(node.right){
-            queue.push(node.right)
-        }
-       }
-       return data
-    }
+//     find(val){
+//         let current=this.root
+//         let found=false
+//         while(current&&!found){
+//             if(val<current.val){
+//                 current=current.left
+//             }
+//             else if(current.val<val){
+//                 current=current.right
+//             }else{
+//                 found=true
+//                 return current
+//             }
+//         }
+//     }
+//     bfs(){
+//         let node=this.root
+//         let data=[]
+//        let queue=[]
+//        queue.push(node)
+//        while(queue.length){
+//         node=queue.shift()
+//         data.push(node.val)
+//         if(node.left){
+//             queue.push(node.left)
+//         }
+//         if(node.right){
+//             queue.push(node.right)
+//         }
+//        }
+//        return data
+//     }
 
-    dfs(){
-       let current=this.root
-       let data=[]
-       function tr(node){
+//     dfs(){
+//        let current=this.root
+//        let data=[]
+//        function tr(node){
         
-         if(node.left){
-            tr(node.left)
-         }
+//          if(node.left){
+//             tr(node.left)
+//          }
        
-         if(node.right){
-            tr(node.right)
-         }
-         data.push(node.val)
-       }
-       tr(current)
-       return data
+//          if(node.right){
+//             tr(node.right)
+//          }
+//          data.push(node.val)
+//        }
+//        tr(current)
+//        return data
+//     }
+
+//     finddegree(node){
+//         let degree=0
+        
+//         if(node.left){
+//             degree+=1
+//         }
+//         if(node.right){
+//             degree+=1
+//         }
+
+//         return degree
+//     }
+
+//     findHight(node=this.root){
+        
+//         if(node==null){
+//             return 0
+//         }
+
+//         let lefthight=this.findHight(node.left)
+//         let righthight=this.findHight(node.right)
+//         return Math.max(lefthight,righthight)+1
+//     }
+// }
+// const bt=new bst()
+
+// bt.insert(50)
+// bt.insert(90)
+// bt.insert(70)
+// bt.insert(40)
+// bt.insert(30)
+// bt.insert(20)
+// bt.insert(60)
+
+
+
+
+// console.log(bt.bfs())
+// console.log(JSON.stringify(bt.root))
+
+
+class Graph {
+    constructor() {
+        this.adjancylist = {};
     }
 
-    finddegree(node){
-        let degree=0
-        
-        if(node.left){
-            degree+=1
+    addvertex(vertex) {
+        if (!this.adjancylist[vertex]) {
+            this.adjancylist[vertex] = new Set();
         }
-        if(node.right){
-            degree+=1
-        }
-
-        return degree
     }
 
-    findHight(node=this.root){
-        
-        if(node==null){
-            return 0
-        }
+    addedege(v1, v2) {
+        this.addvertex(v1);
+        this.addvertex(v2);
+        this.adjancylist[v1].add(v2);
+        this.adjancylist[v2].add(v1);
+    }
 
-        let lefthight=this.findHight(node.left)
-        let righthight=this.findHight(node.right)
-        return Math.max(lefthight,righthight)+1
+    removeEdge(v1, v2) {
+        this.adjancylist[v1].delete(v2);
+        this.adjancylist[v2].delete(v1);
+    }
+
+    removevertex(vertex) {
+        for (let n of this.adjancylist[vertex]) {
+            this.removeEdge(vertex, n);
+        }
+        delete this.adjancylist[vertex];
+    }
+
+    dfs(vertex) {
+        let visited = {};
+        let data = [];
+        let adjacencyList = this.adjancylist;
+
+        (function dfsH(v) {
+            visited[v] = true;
+            data.push(v);
+            adjacencyList[v].forEach((n) => {
+                if (!visited[n]) {
+                    dfsH(n);
+                }
+            });
+        })(vertex);  // Immediately invoke dfsH with the starting vertex
+
+        return data;
     }
 }
-const bt=new bst()
 
-bt.insert(50)
-bt.insert(90)
-bt.insert(70)
-bt.insert(40)
-bt.insert(30)
-bt.insert(20)
-bt.insert(60)
+const graph1 = new Graph();
 
+graph1.addedege("A", "B");
+graph1.addedege("B", "C");
+graph1.addedege("C", "A");
 
+graph1.removeEdge('A', 'B');  // Fixed this line to include both vertices
 
-
-console.log(bt.bfs())
-console.log(JSON.stringify(bt.root))
+console.log(graph1.dfs("A"));  // Corrected the method name
