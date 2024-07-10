@@ -340,15 +340,15 @@ class bst{
        let current=this.root
        let data=[]
        function tr(node){
-        
+        data.push(node.val)
          if(node.left){
             tr(node.left)
          }
-       
+        
          if(node.right){
             tr(node.right)
          }
-         data.push(node.val)
+        
        }
        tr(current)
        return data
@@ -424,5 +424,5 @@ bt.delete(40)
 
 
 
-console.log(bt.findHight())
+console.log(bt.dfs())
 console.log(JSON.stringify(bt.root))

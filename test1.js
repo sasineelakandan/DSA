@@ -10,58 +10,58 @@
 // console.log(b.join(''))
 
 
-class Node{
-    constructor(val){
-        this.val=val
-        this.next=null
-    }
-}
+// class Node{
+//     constructor(val){
+//         this.val=val
+//         this.next=null
+//     }
+// }
 
 
-class linkedlist{
-    constructor(){
-        this.head=null
-        this.tail=null
-        this.size=0
-    }
+// class linkedlist{
+//     constructor(){
+//         this.head=null
+//         this.tail=null
+//         this.size=0
+//     }
 
-    append(val){
-       let node= new Node(val)
-       if(this.size>0){
-        this.tail.next=node
-        this.tail=node
-       }else{
+//     append(val){
+//        let node= new Node(val)
+//        if(this.size>0){
+//         this.tail.next=node
+//         this.tail=node
+//        }else{
     
-        this.head=node
-        this.tail=node
-       }
-       this.size++
-    }
+//         this.head=node
+//         this.tail=node
+//        }
+//        this.size++
+//     }
 
 
-    prepend(val){
-        let node= new Node(val)
-        if(this.size>0){
-            node.next=this.head
+//     prepend(val){
+//         let node= new Node(val)
+//         if(this.size>0){
+//             node.next=this.head
 
-        }else{
-            this.head=node
-            this.tail=null
-        }
-        this.size++
+//         }else{
+//             this.head=node
+//             this.tail=null
+//         }
+//         this.size++
 
-    }
-
-
-}
+//     }
 
 
-const list= new linkedlist()
+// }
 
-list.append(10)
-list.append(20)
 
-console.log(JSON.stringify(list.head))
+// const list= new linkedlist()
+
+// list.append(10)
+// list.append(20)
+
+// console.log(JSON.stringify(list.head))
 
 
 
@@ -223,3 +223,80 @@ console.log(JSON.stringify(list.head))
 // }
 
 // console.log(stake('sasi'))
+
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) {
+          this.adjacencyList[vertex] =new Set()
+        }
+      } // Time: O(1) | Space: O(1)
+    
+      addEdges(vertex1, vertex2) {
+        this.addVertex(vertex1);
+        this.addVertex(vertex2);
+    
+        this.adjacencyList[vertex1].add(vertex2);
+        this.adjacencyList[vertex2].add(vertex1);
+      }
+      removeEdges(v1,v2){
+        this.adjacencyList[v1].delete(v2)
+        this.adjacencyList[v2].delete(v1)
+      } 
+      removeVertex(vertex){
+        let adjacencyList=this.adjacencyList
+        for(let n of adjacencyList[vertex]){
+            this.removeEdges(vertex,n)
+        }
+           
+        delete this.adjacencyList[vertex]
+      }
+   dfs(vertex){
+     let visited={}
+     let data=[]
+     let adjacencyList=this.adjacencyList;
+     (function dfs(v){
+        visited[v]=true
+        data.push(v)
+        adjacencyList[v].forEach((n) => {
+            if(!visited[n]){
+                return dfs(n)
+            }
+        });
+     })(vertex)
+     return data
+   }
+
+   bfs(vertex) {
+    let visited = {};
+    let data = [];
+    let queue = [vertex];
+
+    visited[vertex] = true; // Mark the starting vertex as visited
+
+    while (queue.length) {
+        let curr = queue.shift();
+        data.push(curr);
+
+        for (let neighbor of this.adjacencyList[curr]) {
+            if (!visited[neighbor]) {
+                queue.push(neighbor);
+                visited[neighbor] = true; // Mark the neighbor as visited when it's added to the queue
+            }
+        }
+    }
+
+    return data;
+}
+}
+
+const v = new Graph();
+
+v.addEdges('A', 'B');
+v.addEdges('B', 'C');
+v.addEdges('C', 'A');
+
+console.log(v.bfs('A'));

@@ -278,61 +278,207 @@
 // console.log(JSON.stringify(bt.root))
 
 
-class Graph {
-    constructor() {
-        this.adjancylist = {};
-    }
+// class Graph {
+//     constructor() {
+//         this.adjancylist = {};
+//     }
 
-    addvertex(vertex) {
-        if (!this.adjancylist[vertex]) {
-            this.adjancylist[vertex] = new Set();
-        }
-    }
+//     addvertex(vertex) {
+//         if (!this.adjancylist[vertex]) {
+//             this.adjancylist[vertex] = new Set();
+//         }
+//     }
 
-    addedege(v1, v2) {
-        this.addvertex(v1);
-        this.addvertex(v2);
-        this.adjancylist[v1].add(v2);
-        this.adjancylist[v2].add(v1);
-    }
+//     addedege(v1, v2) {
+//         this.addvertex(v1);
+//         this.addvertex(v2);
+//         this.adjancylist[v1].add(v2);
+//         this.adjancylist[v2].add(v1);
+//     }
 
-    removeEdge(v1, v2) {
-        this.adjancylist[v1].delete(v2);
-        this.adjancylist[v2].delete(v1);
-    }
+//     removeEdge(v1, v2) {
+//         this.adjancylist[v1].delete(v2);
+//         this.adjancylist[v2].delete(v1);
+//     }
 
-    removevertex(vertex) {
-        for (let n of this.adjancylist[vertex]) {
-            this.removeEdge(vertex, n);
-        }
-        delete this.adjancylist[vertex];
-    }
+//     removevertex(vertex) {
+//         for (let n of this.adjancylist[vertex]) {
+//             this.removeEdge(vertex, n);
+//         }
+//         delete this.adjancylist[vertex];
+//     }
 
-    dfs(vertex) {
-        let visited = {};
-        let data = [];
-        let adjacencyList = this.adjancylist;
+//     dfs(vertex) {
+//         let visited = {};
+//         let data = [];
+//         let adjacencyList = this.adjancylist;
 
-        (function dfsH(v) {
-            visited[v] = true;
-            data.push(v);
-            adjacencyList[v].forEach((n) => {
-                if (!visited[n]) {
-                    dfsH(n);
-                }
-            });
-        })(vertex);  // Immediately invoke dfsH with the starting vertex
+//         (function dfsH(v) {
+//             visited[v] = true;
+//             data.push(v);
+//             adjacencyList[v].forEach((n) => {
+//                 if (!visited[n]) {
+//                     dfsH(n);
+//                 }
+//             });
+//         })(vertex);  // Immediately invoke dfsH with the starting vertex
 
-        return data;
+//         return data;
+//     }
+// }
+
+// const graph1 = new Graph();
+
+// graph1.addedege("A", "B");
+// graph1.addedege("B", "C");
+// graph1.addedege("C", "A");
+
+// graph1.removeEdge('A', 'B');  // Fixed this line to include both vertices
+
+// console.log(graph1.dfs("A"));  // Corrected the method name
+
+
+class Node{
+    constructor(val){
+       this.val=val
+       this.left=null
+       this.right=null
     }
 }
 
-const graph1 = new Graph();
+class bst{
+    constructor(){
+        this.root=null
+    }
 
-graph1.addedege("A", "B");
-graph1.addedege("B", "C");
-graph1.addedege("C", "A");
+    insert(val){
+        let node=new Node(val)
+        if(!this.root){
+          this.root=node
+          return this
+        }else{
+            let current=this.root
+            while(true){
+                if(val<current.val){
+                    if(current.left==null){
+                        current.left=node
+                        return this
+                    }else{
+                        current=current.left
 
-graph1.removeEdge('A', 'B');  // Fixed this line to include both vertices
+                    }
+                }else{
+                    if(current.right==null){
+                        current.right=node
+                        return this
+                    }else{
+                        current=current.right
+                    }
+                }
+            }
+        }
+    }
+    find(val){
+        let current=this.root
+        let found=false
+        while(current&&!found){
+            if(val<current.val){
+                current=current.left
+            }
+            else if(val>current.val){
+                current=current.right
+            }else{
+                found=true
+                return current.val
+            }
+        }
+    }
+    bfs(){
+        let node=this.root
+        let data=[]
+        let queue=[]
+        queue.push(node)
+        while(queue.length){
+            node=queue.shift()
+            data.push(node.val)
+            if(node.left){
+                queue.push(node.left)
+            }
+            if(node.right){
+                queue.push(node.right)
+            }
+        } return data
+    }
+    dfs(){
+        let current=this.root
+        let data=[];
+        function trversal(node){
+            
 
-console.log(graph1.dfs("A"));  // Corrected the method name
+          data.push(node.val)
+            
+            if(node.left){
+              trversal(node.left);
+            }
+            if(node.right){
+               trversal(node.right);
+            }
+        }
+        console.log(current);
+        trversal(this.root);
+
+        return data
+    }
+    delete(val){
+        
+        this.root=this.deleteNode(this.root,val)
+    }
+
+    deleteNode(root,val){
+        let current=root
+        if(val<current.val){
+            current.left=this.deleteNode(current.left,val)
+        }
+        else if(val>current.val){
+            current.right=this.deleteNode(current.right,val)
+        }
+        else{
+            if(!current.left&&!current.right){
+                return null
+            }
+            else if(!current.left){
+                return current.right
+            }else if(!current.right){
+                return current.left
+            }else{
+                current.right=this.min(current.right)
+                current.val=this.deleteNode(current.right,current.val)
+            }
+        } 
+        return current
+
+        
+    }
+
+    min(node){
+        let current=node
+        while(current.left!==null){
+            current=current.left
+        }
+
+        return current.val
+    }
+}
+
+const bt=new bst()
+
+bt.insert(50)
+bt.insert(90)
+bt.insert(70)
+bt.insert(40)
+bt.insert(30)
+bt.insert(20)
+bt.insert(60)
+bt.delete(90)
+// console.log(bt.find(30))
+console.log(JSON.stringify(bt.root))
