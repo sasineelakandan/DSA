@@ -1,155 +1,8 @@
-// let a=[8,9,3,3,7,5,8]
-
-
-// class hashtable{
-//     constructor(size){
-//         this.table=new Array(size)
-//         this.size=size
-//     }
-
-//     hash(key){
-//         let total=0
-//         for(let i=0;i<key.length;i++){
-//             total+=key.charCodeAt(i)
-//         }
-//         return total%this.size
-//     }
-
-//     set(key,val){
-//         let index=this.hash(key)
-//         if(!this.table[index]){
-//             this.table[index]=a
-//         }else{
-//             this.table[index].push([key,val])
-//         }
-//     }
-
-//     print(){
-//         let arr=[]
-//         for(let i=0;i<this.table.length;i++){
-             
-//              arr=this.table[i]
-//             }
-
-//             let b=[...new Set(arr)]
-//             console.log(b)
-//         }
-      
-//     }
-
-
-// let ht=new hashtable(1)
-
-// ht.set('arr',a)
-
-// ht.print()
-
-// let a=[
-//     {
-//         "id": 1,
-//         "name": "John Doe",
-//         "age": 20,
-//         "major": "Computer Science",
-//         "gpa": 3.5
-//     },
-//     {
-//         "id": 2,
-//         "name": "Jane Smith",
-//         "age": 22,
-//         "major": "Mechanical Engineering",
-//         "gpa": 3.8
-//     },
-//     {
-//         "id": 3,
-//         "name": "Michael Johnson",
-//         "age": 21,
-//         "major": "Electrical Engineering",
-//         "gpa": 3.6
-//     },
-//     {
-//         "id": 4,
-//         "name": "Emily Davis",
-//         "age": 23,
-//         "major": "Civil Engineering",
-//         "gpa": 3.7
-//     },
-//     {
-//         "id": 5,
-//         "name": "David Brown",
-//         "age": 24,
-//         "major": "Mathematics",
-//         "gpa": 3.9
-//     }
-// ]
-  
-// for(let i=0;i<a.length;i++){
-//     for(let j=i+1;j<a.length;j++){
-//         if(a[i].age>a[j].age){
-//             let temp=a[i].age
-//             a[i].age=a[j].age
-//             a[j].age=temp
-//         }
-//     }
-     
-    
-    
-    
-// }
-// console.log(a)
-
-
-// function stake(str){
-//  let stake=[]
-//  for(let i=0;i<str.length;i++){
-//     stake.push(str[i])
-//  }
-//  let revstr=''
-//  for(let i=0;i<str.length;i++){
-//     revstr+=stake.pop()
-//  }
-//  console.log(revstr)
-// }
-
-// stake('sasi')
-
-// let str='gtrrtyyyee'
-
-// let  frequency={}
-// for(let i=0;i<str.length;i++){
-//     let count=1
-//    for(let j=i+1;j<str.length;j++){
-//     if(str[i]===str[j]){
-//         count++
-//     }
-//     frequency[str[i]]=count
-//    }
-// }
-
-// console.log(frequency)
-
-
-
-
-
-
-
-
-// let str='gtrrtyyyee'
-
-// let  frequency={}
-// for(let i=0;i<str.length;i++){
-//     if(frequency[str[i]]) frequency[str[i]]++
-//     else frequency[str[i]]=1
-// }
-// console.log(frequency)
-
-
 // class Node{
 //     constructor(val){
 //         this.val=val
 //         this.left=null
 //         this.right=null
-
 //     }
 // }
 
@@ -158,10 +11,9 @@
 //     constructor(){
 //         this.root=null
 //     }
-
 //     insert(val){
 //         let node=new Node(val)
-//       if(this.root==null){
+//       if(!this.root){
 //         this.root=node
 //         return this
 //       }else{
@@ -187,78 +39,7 @@
 //     }
 
 //     find(val){
-//         let current=this.root
-//         let found=false
-//         while(current&&!found){
-//             if(val<current.val){
-//                 current=current.left
-//             }
-//             else if(current.val<val){
-//                 current=current.right
-//             }else{
-//                 found=true
-//                 return current
-//             }
-//         }
-//     }
-//     bfs(){
-//         let node=this.root
-//         let data=[]
-//        let queue=[]
-//        queue.push(node)
-//        while(queue.length){
-//         node=queue.shift()
-//         data.push(node.val)
-//         if(node.left){
-//             queue.push(node.left)
-//         }
-//         if(node.right){
-//             queue.push(node.right)
-//         }
-//        }
-//        return data
-//     }
 
-//     dfs(){
-//        let current=this.root
-//        let data=[]
-//        function tr(node){
-        
-//          if(node.left){
-//             tr(node.left)
-//          }
-       
-//          if(node.right){
-//             tr(node.right)
-//          }
-//          data.push(node.val)
-//        }
-//        tr(current)
-//        return data
-//     }
-
-//     finddegree(node){
-//         let degree=0
-        
-//         if(node.left){
-//             degree+=1
-//         }
-//         if(node.right){
-//             degree+=1
-//         }
-
-//         return degree
-//     }
-
-//     findHight(node=this.root){
-        
-//         if(node==null){
-//             return 0
-//         }
-
-//         let lefthight=this.findHight(node.left)
-//         let righthight=this.findHight(node.right)
-//         return Math.max(lefthight,righthight)+1
 //     }
 // }
 // const bt=new bst()
@@ -274,211 +55,111 @@
 
 
 
-// console.log(bt.bfs())
+
 // console.log(JSON.stringify(bt.root))
 
 
-// class Graph {
-//     constructor() {
-//         this.adjancylist = {};
+
+// class MaxHeap{
+//     constructor(){
+//         this.values=[]
 //     }
 
-//     addvertex(vertex) {
-//         if (!this.adjancylist[vertex]) {
-//             this.adjancylist[vertex] = new Set();
+//     Insert(val){
+//         this.values.push(val)
+//         this.bubbleup()
+//     }
+
+//     bubbleup(){
+//         let idx=this.values.length-1
+//         let element=this.values[idx]
+//         while(idx>0){
+//             let parentidx=Math.floor(idx-1/2)
+//             let parent=this.values[parentidx]
+//             if(element<=parent){
+//                 break
+//             }
+//             this.values[parentidx]=element
+//             this.values[idx]=parent
+//             idx=parentidx
 //         }
-//     }
-
-//     addedege(v1, v2) {
-//         this.addvertex(v1);
-//         this.addvertex(v2);
-//         this.adjancylist[v1].add(v2);
-//         this.adjancylist[v2].add(v1);
-//     }
-
-//     removeEdge(v1, v2) {
-//         this.adjancylist[v1].delete(v2);
-//         this.adjancylist[v2].delete(v1);
-//     }
-
-//     removevertex(vertex) {
-//         for (let n of this.adjancylist[vertex]) {
-//             this.removeEdge(vertex, n);
-//         }
-//         delete this.adjancylist[vertex];
-//     }
-
-//     dfs(vertex) {
-//         let visited = {};
-//         let data = [];
-//         let adjacencyList = this.adjancylist;
-
-//         (function dfsH(v) {
-//             visited[v] = true;
-//             data.push(v);
-//             adjacencyList[v].forEach((n) => {
-//                 if (!visited[n]) {
-//                     dfsH(n);
-//                 }
-//             });
-//         })(vertex);  // Immediately invoke dfsH with the starting vertex
-
-//         return data;
 //     }
 // }
 
-// const graph1 = new Graph();
+// const mh=new MaxHeap()
+// mh.Insert(25)
+// mh.Insert(85)
+// mh.Insert(75)
+// mh.Insert(95)
+// mh.Insert(55)
+// mh.Insert(35)
+// mh.Insert(45)
 
-// graph1.addedege("A", "B");
-// graph1.addedege("B", "C");
-// graph1.addedege("C", "A");
-
-// graph1.removeEdge('A', 'B');  // Fixed this line to include both vertices
-
-// console.log(graph1.dfs("A"));  // Corrected the method name
+// console.log(mh)
 
 
-class Node{
-    constructor(val){
-       this.val=val
-       this.left=null
-       this.right=null
-    }
-}
+// class Node {
+//     constructor(val, priority) {
+//         this.val = val;
+//         this.priority = priority;
+//     }
+// }
 
-class bst{
-    constructor(){
-        this.root=null
-    }
+// class PriorityQ {
+//     constructor() {
+//         this.values = [];
+//     }
 
-    insert(val){
-        let node=new Node(val)
-        if(!this.root){
-          this.root=node
-          return this
-        }else{
-            let current=this.root
-            while(true){
-                if(val<current.val){
-                    if(current.left==null){
-                        current.left=node
-                        return this
-                    }else{
-                        current=current.left
+//     insert(val, priority) {
+//         let node = new Node(val, priority);
+//         this.values.push(node);
+//         this.bubbleUp();
+//     }
 
-                    }
-                }else{
-                    if(current.right==null){
-                        current.right=node
-                        return this
-                    }else{
-                        current=current.right
-                    }
-                }
-            }
-        }
-    }
-    find(val){
-        let current=this.root
-        let found=false
-        while(current&&!found){
-            if(val<current.val){
-                current=current.left
-            }
-            else if(val>current.val){
-                current=current.right
-            }else{
-                found=true
-                return current.val
-            }
-        }
-    }
-    bfs(){
-        let node=this.root
-        let data=[]
-        let queue=[]
-        queue.push(node)
-        while(queue.length){
-            node=queue.shift()
-            data.push(node.val)
-            if(node.left){
-                queue.push(node.left)
-            }
-            if(node.right){
-                queue.push(node.right)
-            }
-        } return data
-    }
-    dfs(){
-        let current=this.root
-        let data=[];
-        function trversal(node){
-            
-
-          data.push(node.val)
-            
-            if(node.left){
-              trversal(node.left);
-            }
-            if(node.right){
-               trversal(node.right);
-            }
-        }
-        console.log(current);
-        trversal(this.root);
-
-        return data
-    }
-    delete(val){
+//     bubbleUp() {
+//         let idx = this.values.length - 1;
+//         const element = this.values[idx];
         
-        this.root=this.deleteNode(this.root,val)
-    }
+//         while (idx > 0) {
+//             let parentIdx = Math.floor((idx - 1) / 2);
+//             let parent = this.values[parentIdx];
+//             if (element.priority <= parent.priority) break;
+//             this.values[parentIdx] = element;
+//             this.values[idx] = parent;
+//             idx = parentIdx;
+//         }
+//     }
 
-    deleteNode(root,val){
-        let current=root
-        if(val<current.val){
-            current.left=this.deleteNode(current.left,val)
-        }
-        else if(val>current.val){
-            current.right=this.deleteNode(current.right,val)
-        }
-        else{
-            if(!current.left&&!current.right){
-                return null
-            }
-            else if(!current.left){
-                return current.right
-            }else if(!current.right){
-                return current.left
-            }else{
-                current.right=this.min(current.right)
-                current.val=this.deleteNode(current.right,current.val)
-            }
-        } 
-        return current
+//     print() {
+//         console.log(this.values);
+//     }
+// }
 
-        
-    }
+// const mh = new PriorityQ();
+// mh.insert(25, 9);
+// mh.insert(85, 7);
+// mh.insert(75, 6);
+// mh.insert(95, 11);
+// mh.insert(55, 5);
+// mh.insert(35, 2);
+// mh.insert(45, 1);
+// mh.print();
+// console.log(mh);
 
-    min(node){
-        let current=node
-        while(current.left!==null){
-            current=current.left
-        }
 
-        return current.val
-    }
-}
+// function recursion(arr,start=0,end=arr.length-1){
+//     if(start>end){
+//         return arr
+//     }
 
-const bt=new bst()
+//     [arr[start],arr[end]]=[arr[end],arr[start]]
+//     return recursion(arr,++start,--end)
+    
+    
+    
+// }
+// let arr=[1,2,3,4,5,6,7,9]
+// console.log(recursion(arr))
 
-bt.insert(50)
-bt.insert(90)
-bt.insert(70)
-bt.insert(40)
-bt.insert(30)
-bt.insert(20)
-bt.insert(60)
-bt.delete(90)
-// console.log(bt.find(30))
-console.log(JSON.stringify(bt.root))
+
+
