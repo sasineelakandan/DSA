@@ -163,3 +163,88 @@
 
 
 
+// class graph{
+//     constructor(){
+//         this.adjanceylist={}
+//     }
+
+//     addvertex(vertex){
+//         if(!this.adjanceylist[vertex]){
+//             this.adjanceylist[vertex]=new Set()
+//         }
+//     }
+
+//     addEdges(v1,v2){
+//         this.addvertex(v1)
+//         this.addvertex(v2)
+//         this.adjanceylist[v1].add(v2)
+//         this.adjanceylist[v2].add(v1)
+//     }
+//     removeedges(v1,v2){
+//         this.adjanceylist[v1].delete(v2)
+//         this.adjanceylist[v2].delete(v1)
+//     }
+//   removeVertex(vertex){
+//     for(let neighbor of this.adjanceylist[vertex]){
+//         this.removeedges(vertex,neighbor)
+//     }
+//     delete this.adjanceylist[vertex]
+//   }
+
+//   dfs(vertex){
+//     let visited={}
+//     let data=[]
+//     let adjacencyList1=this.adjanceylist;
+//     (function dfsh(v){
+//        visited[v]=true
+//        data.push(v)
+//        adjacencyList1[v].forEach((neighbor)=> {
+//           if(!visited[neighbor]){
+//              return dfsh(neighbor)
+//           }
+//        });
+//     })(vertex)
+//     return data
+//   }
+// }
+
+// const gh=new graph()
+
+// gh.addEdges('A','B')
+// gh.addEdges('B','C')
+// gh.addEdges('C','A')
+
+// console.log(gh.dfs('A'))
+
+class MaxHeap{
+    constructor(){
+        this.values=[]
+    }
+    Insert(val){
+        this.values.push(val)
+        this.bubbleup()
+    }
+    bubbleup(){
+        let idx=this.values.length-1
+        let element=this.values[idx]
+        while(idx>0){
+            let parentidx=Math.floor(idx-1/2)
+            let parent=this.values[parentidx]
+            if(element<=parent){
+                break
+            }
+            this.values[idx]=parent
+            this.values[parentidx]=element
+            idx=parentidx
+        }
+    }
+}
+
+const mh=new MaxHeap()
+mh.Insert(40)
+mh.Insert(20)
+mh.Insert(30)
+mh.Insert(70)
+mh.Insert(50)
+
+console.log(mh)
