@@ -1,63 +1,73 @@
-class MaxHeap1 {
-    constructor() {
-      this.heap = [];
-    }
-  
-    build(arr) {
-      
-      this.heap = arr;
-      for (let i = Math.floor(this.heap.length / 2) - 1; i >= 0; i--) {
-        this.heapifyDown(i);
-      }
-      
-    }
-  
-    inserting(value) {
-      this.heap.push(value);
-      this.heapifyUp(this.heap.length - 1);
-    }
-  
-    heapifyUp(idx) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-  
-      if (parentIdx && this.heap[parentIdx] < this.heap[idx]) {
-        [this.heap[idx], this.heap[parentIdx]] = [ this.heap[parentIdx],this.heap[idx],];
-        this.heapifyUp(parentIdx);
-      }
-    }
-  
-    heapifyDown(idx) {
-      let parentIdx = idx;
-  
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
-  
-      if (
-        leftChildIdx < this.heap.length &&
-        this.heap[leftChildIdx] > this.heap[parentIdx]
-      ) {
-        parentIdx = leftChildIdx;
-      }
-      if (
-        rightChildIdx < this.heap.length &&
-        this.heap[rightChildIdx] > this.heap[parentIdx]
-      ) {
-        parentIdx = rightChildIdx;
-      }
-      if (parentIdx !== idx) {
-        [this.heap[idx], this.heap[parentIdx]] = [
-          this.heap[parentIdx],
-          this.heap[idx],
-        ];
-        this.heapifyDown(parentIdx);
-      }
-    }
+class Heap {
+  constructor() {
+      this.Heap = [];
   }
 
-  const mh=new MaxHeap1()
-  mh.inserting(8)
-  mh.inserting(4)
-  mh.inserting(5)
-  mh.inserting(6)
+  insert(val) {
+      this.Heap.push(val);
+      this.bubbleup(this.Heap.length - 1);
+  }
 
-  console.log(mh.values)
+  bubbleup(idx) {
+      let parentidx = Math.floor((idx - 1) / 2);
+      if (idx > 0 && this.Heap[parentidx] < this.Heap[idx]) {
+          [this.Heap[parentidx], this.Heap[idx]] = [this.Heap[idx], this.Heap[parentidx]];
+          this.bubbleup(parentidx);
+      }
+  }
+
+  build(arr) {
+      this.Heap = arr;
+      for (let i = Math.floor(this.Heap.length / 2) - 1; i >= 0; i--) {
+          this.bubbledown(i);
+      }
+  }
+
+  bubbledown(idx) {
+      let largest = idx;
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+
+      if (leftChildIdx < this.Heap.length && this.Heap[leftChildIdx] > this.Heap[largest]) {
+          largest = leftChildIdx;
+      }
+      if (rightChildIdx < this.Heap.length && this.Heap[rightChildIdx] > this.Heap[largest]) {
+          largest = rightChildIdx;
+      }
+
+      if (largest !== idx) {
+          [this.Heap[largest], this.Heap[idx]] = [this.Heap[idx], this.Heap[largest]];
+          this.bubbledown(largest);
+      }
+  }
+
+  removeMax() {
+      if (this.Heap.length === 0) return null;
+      if (this.Heap.length === 1) return this.Heap.pop();
+
+      const max = this.Heap[0];
+      this.Heap[0] = this.Heap.pop();
+      this.bubbledown(0);
+
+      return max;
+  }
+}
+
+let mh = new Heap();
+mh.insert(8);
+mh.insert(4);
+mh.insert(5);
+mh.insert(6);
+console.log("Heap before removal:", mh.Heap);
+function sort() {
+  const sortarr = [];
+  while (mh.Heap.length > 0) {
+      sortarr.unshift(mh.removeMax());
+  }
+  return sortarr;
+}
+console.log(sort())
+
+
+
+

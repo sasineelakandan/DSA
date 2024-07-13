@@ -420,7 +420,7 @@ bt.insert(40)
 bt.insert(30)
 bt.insert(20)
 bt.insert(60)
-bt.delete(40)
+bt.delete(60)
 
 
 
